@@ -1,0 +1,70 @@
+h1, h2{
+    text-align: center;
+}
+.main {
+    text-align: center;
+}
+.direct {
+    text-align: center;
+    font-size: 20px;
+    color: #5ea9be;
+}
+p {
+    font-size: 20px;
+}
+.geometry{
+    color: #5ea9be;
+}
+.geometrycontainer {
+    border: 0.5px solid #5ea9be;
+    /*border-left-width: 5px;*/
+    padding: 10px;
+    color: #5ea9be;
+    width: 550px;
+}
+.algebracontainer {
+    color: #8bd8c6;
+    border: 0.5px solid #8bd8c6;
+    padding: 10px;
+    width: 500px;
+}
+.algebra{
+    color: #8bd8c6;
+}
+.info {
+    margin-bottom: 10px;
+    margin-left: 5px;
+    width: 15px;
+}
+.geodrop {
+    text-align: center;
+}
+button.geodrop {
+    background-color: #5ea9be;
+    width: 250px;
+}
+th, td {
+    border: 0.5px solid #5ea9be;
+    border-collapse: collapse;
+    padding: 10px;
+}
+table {
+    margin-left: 25px;
+    margin-right: 25px;
+}
+.note{
+    background-color: rgb(255, 142, 142);
+    color: black;
+    border: 1px solid red;
+    border-left-width: 2.5px;
+}
+.area{
+    color: #000000;
+    border: 1px solid#0000ff;
+    background-color: #96afff;
+    border-left-width: 2.5px;
+    padding: 10px;
+}
+input {
+    margin: 2.5px;
+}
