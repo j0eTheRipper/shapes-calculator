@@ -68,3 +68,10 @@ table {
 input {
     margin: 2.5px;
 }
+.perimeter{
+    color: #000000;
+    border: 1px solid #00ff00;
+    background-color: #73cc73;
+    border-left-width: 2.5px;
+    padding: 10px;
+}
