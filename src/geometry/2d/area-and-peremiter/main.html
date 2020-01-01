@@ -12,18 +12,31 @@
 <body class="geometry">
   <h1>Area & Perimeter<img class="info" src="../../../img/info.png" title="here, you can calculate the area or the peremiterof any 2d shape"></h1>
   <hr width="250px">
-  <div class="geometrycontainer container">
+  <div class="geometrycontainer container" a>
     <h2>Regular Shapes<img class="info" src="../../../img/info.png" title="Any shape that has all its sides equal in length and its angles equal in degrees is a regular shape"></h2>
     <hr width="125px">
     <div class="area">
-      <h3>Area</h3>
+      <h3>Caclualtor</h3>
       <input type="number" placeholder="number of sides" id="numberOfSides"><br>
       <input type="number" placeholder="apothem length" id="apothemLength"> 
       | 
-      <input type="number" placeholder="side length" id="sideLength"><br>
+      <input type="number" placeholder="side length" id="sideLength-reg"><br>
       <button class="btn btn-primary" id="calcAreaReg">Calculate Area</button> 
       |
       <button class="btn btn-secondary" id="calcPerReg">Caclulate Perimeter</button>
+    </div>
+  </div>
+  <div class="geometrycontainer container" id="quad">
+    <h2>Quadrilaterals<img src="../../../img/info.png" class="info" title="any polygon that has 4 sides."></h2>
+    <hr width="250px">
+    <div class="area">
+      <h3>rectangle Calculator</h3>
+      <input type="number" placeholder="base" id="base">
+      <input type="number" placeholder="height" id="height"> 
+      <br>
+      <button class="btn btn-primary" id="calcRectArea">Calculate Area</button>
+      |
+      <button class="btn btn-secondary" id="calcRectPer">Calculate Peremiter</button>
     </div>
   </div>
 </body>

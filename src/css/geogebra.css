@@ -21,6 +21,7 @@ p {
     padding: 10px;
     color: #5ea9be;
     width: 550px;
+    margin-top: 10px;
 }
 .algebracontainer {
     color: #8bd8c6;
@@ -64,6 +65,7 @@ table {
     background-color: #96afff;
     border-left-width: 2.5px;
     padding: 10px;
+    margin: 10px;
 }
 input {
     margin: 2.5px;
