@@ -18,14 +18,16 @@
     <div class="area">
       <h3>Caclualtor</h3>
       <input type="number" placeholder="number of sides" id="numOfSides"/> 
-      <br>
-      <select id="Dimintions">
+      <select id="regShapes-dimintions">
+        <option>Please select the given dimention</option>
         <option value="apothem-side">Apothem and Side</option>
-        <option value="apothem-upperangle">Apothem and upper-angle</option>
-        <option value="apothem-lowerangle">Apothem and lower-angle</option>
-        <option value="side-upperangle">Side and lower-angle</option>
-        <option value="side-lowerangle">Side and lower-angle</option>
+        <option value="apothem">Apothem only</option>
+        <option value="side">Side only</option>
       </select>
+      <div id="regShapes-inputSetup"></div>
+      <button id='helloworld'>asdf</button>
+      <button class="btn btn-success" id="regShapes-calc-area">Calculate area</button>
+      <button class="btn btn-success" id="regShapes-calc-perimeter">Calculate perimeter</button>
     </div>
   </div>
 </body>
