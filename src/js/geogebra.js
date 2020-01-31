@@ -1,19 +1,82 @@
-//@ts-check
 window.onload = function () {
-    var regShapes = {
+    var regShapes = { 
         dimintions: document.getElementById('regShapes-dimintions'), 
-        side: document.getElementById('regShapes-sideLength'),
-        apothem: document.getElementById('regShapes-apothemLength'), 
+        numOfSides: document.getElementById('numOfSides'),
+        mergePlace: document.getElementById('regShapes-mergePlace'),
+        resetBtn: document.getElementById('regShapes-resetDimintions'),
+        areaBtn: this.document.getElementById('regShapes-calc-area'),
+        perimeterBtn: this.document.getElementById('regShapes-calc-perimeter'),
         inputSetup: function () {
-            
-            if (this.dimintions.value === 'apothem-side') {
-                alert('helloWorld')
-                mkinput('regShapes-mergePlace', 'regShapes-apothemLength', 'apothem');
+            if (this.mergePlace.innerHTML === '') {
+                switch (this.dimintions.value) {
+                    case 'apothem-side':
+                        mkinput('regShapes-mergePlace', 'regShapes-apothemLength', 'apothem');
+                        mkinput('regShapes-mergePlace', 'regShapes-sideLength', 'side');
+                        //console.log(1);
+                        break;
+                    case 'apothem':
+                        mkinput('regShapes-mergePlace', 'regShapes-apothemLength', 'apothem');
+                        //console.log(2)
+                        break;
+                    case 'side':
+                        mkinput('regShapes-mergePlace', 'regShapes-sideLength', 'side');
+                        //console.log(3)
+                        break;
+                    default: 
+                        console.log('please fix the bug');
+                        break;
+                }
+            } else {
+                alert('Please reset the dimintions by clicking the \'reset dimintions\' button');
+            }
+        },
+        calculator: function (isArea) {
+            var side, apothem, area, perimeter;
+            var theata = Math.tan(Math.PI * (180 / this.numOfSides.value) / 180);
+            function isAreaChecker(areaFormula, perimeterFormula) {
+                if (isArea === true) {
+                    area = areaFormula;
+                } else {
+                    perimeter = perimeterFormula;
+                }
+            }
+            switch (this.dimintions.value) {
+                case 'apothem-side':
+                    apothem = parseFloat(document.getElementById('regShapes-apothemLength').value);
+                    side = parseFloat(document.getElementById('regShapes-sideLength').value);
+                    area = apothem * side * this.numOfSides.value / 2;
+                    isAreaChecker(apothem * side * this.numOfSides.value / 2, side * this.numOfSides.value)
+                    break;
+                case 'apothem':
+                    apothem = parseFloat(document.getElementById('regShapes-apothemLength').value);
+                    isAreaChecker(theata * Math.pow(apothem, 2) * 2 * this.numOfSides.value / 2, theata * apothem * 2 * this.numOfSides.value);
+                    break;
+                case 'side':
+                    side = parseFloat(document.getElementById('regShapes-sideLength').value);
+                    isAreaChecker(this.numOfSides.value * Math.pow(side, 2) / 4 / theata, this.numOfSides.value * side);
+                    break;
+                default: 
+                    console.log('please fix the bug');
+                    break;
+            }
+            if (isArea === true) {
+                return alert(area);
+            } else {
+                return alert(perimeter);
             }
         }
-    }
-    document.getElementById('helloworld').onclick = function () {
+    };
+    regShapes.dimintions.onchange = function () {
         regShapes.inputSetup();
+    }
+    regShapes.resetBtn.onclick = function () {
+        regShapes.mergePlace.innerHTML = '';
+    }
+    regShapes.areaBtn.onclick = function () {
+        regShapes.calculator(true);
+    }
+    regShapes.perimeterBtn.onclick = function () {
+        regShapes.calculator(false);
     }
     function mkinput(mergePlace, id, placeholder) {
         var newElement = document.createElement('input');
