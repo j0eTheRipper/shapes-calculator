@@ -22,6 +22,9 @@ window.onload = function () {
                         mkinput('regShapes-mergePlace', 'regShapes-sideLength', 'side');
                         //console.log(3)
                         break;
+                    case 'radius': 
+                        mkinput('regShapes-mergePlace', 'regShapes-radius', 'radius');
+                        //console.log(4)
                     default: 
                         console.log('please fix the bug');
                         break;
@@ -31,8 +34,8 @@ window.onload = function () {
             }
         },
         calculator: function (isArea) {
-            var side, apothem, area, perimeter;
-            var theata = Math.tan(Math.PI * (180 / this.numOfSides.value) / 180);
+            var side, apothem, radius, area, perimeter;
+            var theata = Math.PI * (180 / this.numOfSides.value) / 180;
             function isAreaChecker(areaFormula, perimeterFormula) {
                 if (isArea === true) {
                     area = areaFormula;
@@ -49,11 +52,15 @@ window.onload = function () {
                     break;
                 case 'apothem':
                     apothem = parseFloat(document.getElementById('regShapes-apothemLength').value);
-                    isAreaChecker(theata * Math.pow(apothem, 2) * 2 * this.numOfSides.value / 2, theata * apothem * 2 * this.numOfSides.value);
+                    isAreaChecker(Math.tan(theata) * Math.pow(apothem, 2) * 2 * this.numOfSides.value / 2, Math.tan(theata) * apothem * 2 * this.numOfSides.value);
                     break;
                 case 'side':
                     side = parseFloat(document.getElementById('regShapes-sideLength').value);
-                    isAreaChecker(this.numOfSides.value * Math.pow(side, 2) / 4 / theata, this.numOfSides.value * side);
+                    isAreaChecker(this.numOfSides.value * Math.pow(side, 2) / 4 / Math.tan(theata), this.numOfSides.value * side);
+                    break;
+                case 'radius':
+                    radius = parseFloat(document.getElementById('regShapes-radius').value);
+                    //isAreaChecker(this.numOfSides * Math.pow)
                     break;
                 default: 
                     console.log('please fix the bug');
@@ -66,11 +73,13 @@ window.onload = function () {
             }
         }
     };
+    
     regShapes.dimintions.onchange = function () {
         regShapes.inputSetup();
     }
     regShapes.resetBtn.onclick = function () {
         regShapes.mergePlace.innerHTML = '';
+        regShapes.dimintions.value = 'defult'
     }
     regShapes.areaBtn.onclick = function () {
         regShapes.calculator(true);

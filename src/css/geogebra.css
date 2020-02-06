@@ -23,6 +23,13 @@ p {
     width: 650px;
     margin-top: 10px;
 }
+.criditscontainer {
+    border: 0.5px solid #ff0000;
+    /*border-left-width: 5px;*/
+    padding: 10px;
+    width: 650px;
+    margin-top: 10px;
+}
 .algebracontainer {
     color: #8bd8c6;
     border: 0.5px solid #8bd8c6;
@@ -37,29 +44,7 @@ p {
     margin-left: 5px;
     width: 15px;
 }
-.geodrop {
-    text-align: center;
-}
-button.geodrop {
-    background-color: #5ea9be;
-    width: 250px;
-}
-th, td {
-    border: 0.5px solid #5ea9be;
-    border-collapse: collapse;
-    padding: 10px;
-}
-table {
-    margin-left: 25px;
-    margin-right: 25px;
-}
-.note{
-    background-color: rgb(255, 142, 142);
-    color: black;
-    border: 1px solid red;
-    border-left-width: 2.5px;
-}
-.area{
+.calculator{
     color: #000000;
     border: 1px solid#0000ff;
     background-color: #96afff;
@@ -79,4 +64,8 @@ input {
 }
 #regSahpes-resetInputs {
     margin: 5px;
+}
+.back{
+    position: fixed;
+    margin: 10px;
 }

@@ -10,19 +10,24 @@
     <title>Geogebra Calculator</title>
 </head>
 <body class="geometry">
+  <a href="../../../../index.html">
+    <img src="../../../img/back.png" title="go back" class="back"/>
+  </a>
   <h1>Area & Perimeter<img class="info" src="../../../img/info.png" title="here, you can calculate the area or the peremiterof any 2d shape"></h1>
   <hr width="250px">
-  <div class="geometrycontainer container" a>
+  <!--Regular shapes-->
+  <div class="geometrycontainer container">
     <h2>Regular Shapes<img class="info" src="../../../img/info.png" title="Any shape that has all its sides equal in length and its angles equal in degrees is a regular shape"></h2>
     <hr width="125px">
-    <div class="area">
+    <div class="calculator">
       <h3>Caclualtor</h3>
       <input type="number" placeholder="number of sides" id="numOfSides"/>
       <br>
       <select id="regShapes-dimintions">
-        <option>Please select the given dimention</option>
+        <option value="defult">Please select the given dimention</option>
         <option value="apothem-side">Apothem and Side</option>
         <option value="apothem">Apothem only</option>
+        <option value="radius">readius</option>
         <option value="side">Side only</option>
       </select>
       <button id='regShapes-resetDimintions' class="btn btn-warning">Reset dimintions</button>
@@ -30,6 +35,16 @@
       <button class="btn btn-success" id="regShapes-calc-area">Calculate area</button>
       <button class="btn btn-success" id="regShapes-calc-perimeter">Calculate perimeter</button>
     </div>
+  </div>
+  <!--quadrilaterals-->
+  <div class="geometrycontainer container">
+    <h2>Quadrilaterals<img class="info" src="../../../img/info.png" title="Shapes with 4 sides and 4 angles (not nesserly equal)"></h2>
+    <p>Please select the shape You want to Calculate it has to be with 4 sides</p>
+    <select id="Quad-shapeSelect">
+      <option value="defult">----</option>
+      <option value="trapiziod">trapizoid</option>
+      <option value="rectangle">rectangle</option>
+    </select>
   </div>
 </body>
 </html>
