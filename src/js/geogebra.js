@@ -6,7 +6,7 @@ window.onload = function () {
         resetBtn: document.getElementById('regShapes-resetDimintions'),
         areaBtn: this.document.getElementById('regShapes-calc-area'),
         perimeterBtn: this.document.getElementById('regShapes-calc-perimeter'),
-        inputSetup: function () {
+        calculatorSetup: function () {
             if (this.mergePlace.innerHTML === '') {
                 switch (this.dimintions.value) {
                     case 'apothem-side':
@@ -52,7 +52,7 @@ window.onload = function () {
                     break;
                 case 'apothem':
                     apothem = parseFloat(document.getElementById('regShapes-apothemLength').value);
-                    isAreaChecker(Math.tan(theata) * Math.pow(apothem, 2) * 2 * this.numOfSides.value / 2, Math.tan(theata) * apothem * 2 * this.numOfSides.value);
+                    isAreaChecker(Math.tan(theata) * Math.pow(apothem, 2) * this.numOfSides.value, Math.tan(theata) * apothem * 2 * this.numOfSides.value);
                     break;
                 case 'side':
                     side = parseFloat(document.getElementById('regShapes-sideLength').value);
@@ -60,7 +60,7 @@ window.onload = function () {
                     break;
                 case 'radius':
                     radius = parseFloat(document.getElementById('regShapes-radius').value);
-                    //isAreaChecker(this.numOfSides * Math.pow)
+                    isAreaChecker(Math.sin(theata) * Math.cos(theata) * Math.pow(radius, 2) * this.numOfSides.value, Math.sin(theata) * radius * 2 * this.numOfSides.value);
                     break;
                 default: 
                     console.log('please fix the bug');
@@ -73,9 +73,26 @@ window.onload = function () {
             }
         }
     };
-    
+    var quad = {
+        shapeSelect: document.getElementById('quad-shapeSelect'),
+        dimintions: [],
+        calculatorSetup: function () {
+            switch (this.shapeSelect.value) {
+                case 'rectangle':
+                        this.dimintions.push('length');
+                        this.dimintions.push('width');
+                        this.dimintions.push('diognal')
+                    break;
+                case 'square':
+                    this.dimintions.push('side');
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
     regShapes.dimintions.onchange = function () {
-        regShapes.inputSetup();
+        regShapes.calculatorSetup();
     }
     regShapes.resetBtn.onclick = function () {
         regShapes.mergePlace.innerHTML = '';
