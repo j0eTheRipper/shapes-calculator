@@ -73,24 +73,6 @@ window.onload = function () {
             }
         }
     };
-    var quad = {
-        shapeSelect: document.getElementById('quad-shapeSelect'),
-        dimintions: [],
-        calculatorSetup: function () {
-            switch (this.shapeSelect.value) {
-                case 'rectangle':
-                        this.dimintions.push('length');
-                        this.dimintions.push('width');
-                        this.dimintions.push('diognal')
-                    break;
-                case 'square':
-                    this.dimintions.push('side');
-                    break;
-                default:
-                    break;
-            }
-        }
-    };
     regShapes.dimintions.onchange = function () {
         regShapes.calculatorSetup();
     }
@@ -110,6 +92,16 @@ window.onload = function () {
         newElement.setAttribute('placeholder', placeholder);
         newElement.setAttribute('type', 'number');
         document.getElementById(mergePlace).appendChild(newElement);
+    }
+    function mkselect(selectElements, mergePlace) {
+        var newSelect = document.createElement('select');
+        document.getElementById(mergePlace).appendChild(newSelect);
+        for (var i = 0; i < selectElements.length; i++) {
+            var newOption = document.createElement('option');
+            var node = document.createTextNode(selectElements[i]);
+            newOption.appendChild(node);
+            newSelect.appendChild(newOption);
+        }
     }
     //Dont code after this curly brace.
 }
