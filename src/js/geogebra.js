@@ -1,4 +1,5 @@
 window.onload = function () {
+    //regular shapes:
     var regShapes = { 
         dimintions: document.getElementById('regShapes-dimintions'), 
         numOfSides: document.getElementById('numOfSides'),
@@ -72,7 +73,46 @@ window.onload = function () {
                 return alert(perimeter);
             }
         }
-    };
+    }; 
+    //quadrilatrals:
+    var quadrilatrals = {
+        shapesSelect: document.getElementById('quad-shapeSelect'),
+        dimintions: [],
+        calculatorSetup: function () {
+            var inputPlace = document.getElementById('quad-inputPlace').innerHTML;
+            var dimintionsSelect =  document.getElementById('quad-dimintionsSelect').innerHTML;
+            switch (this.shapesSelect.value) {
+                case 'square':
+                    this.dimintions.push('side'); 
+                    this.dimintions.push('apothem');
+                    this.dimintions.push('diognal');
+                    this.dimintions.push('radius');
+                    this.dimintions.push('perimeter to area');
+                    this.dimintions.push('area to perimeter');
+                    break;
+                default:
+                    console.log('please fix the bug')
+                    break;
+            }
+            if (this.dimintions.length > 0) { 
+                if (dimintionsSelect === '') {
+                    mkselect('quad-dimintionsSelect', 'quad-options', this.dimintions);
+                } else {
+                    alert('please reset all using the \'reset all\' button before changing the dimintions')
+                }
+                var quadOptions = document.getElementById('quad-options');   
+                quadOptions.onchange = function () {
+                    if (inputPlace === '') {
+                        mkinput('quad-inputPlace', quadOptions.value, quadOptions.value)
+                    } else {
+                        alert('If you want to only change the dimintions, use the reset dimintions button or use the reset all button if you want to reset everything')
+                    }
+                }
+            } else {
+                
+            }
+        }
+    }
     regShapes.dimintions.onchange = function () {
         regShapes.calculatorSetup();
     }
@@ -86,6 +126,9 @@ window.onload = function () {
     regShapes.perimeterBtn.onclick = function () {
         regShapes.calculator(false);
     }
+    quadrilatrals.shapesSelect.onchange = function () {
+        quadrilatrals.calculatorSetup();
+    }
     function mkinput(mergePlace, id, placeholder) {
         var newElement = document.createElement('input');
         newElement.setAttribute('id', id);
@@ -93,14 +136,21 @@ window.onload = function () {
         newElement.setAttribute('type', 'number');
         document.getElementById(mergePlace).appendChild(newElement);
     }
-    function mkselect(selectElements, mergePlace) {
-        var newSelect = document.createElement('select');
-        document.getElementById(mergePlace).appendChild(newSelect);
-        for (var i = 0; i < selectElements.length; i++) {
-            var newOption = document.createElement('option');
-            var node = document.createTextNode(selectElements[i]);
-            newOption.appendChild(node);
-            newSelect.appendChild(newOption);
+    function mkselect(mergePlace, selectID, selectOptionList) {
+        var calculator = document.getElementById(mergePlace);
+        var dimintions = document.createElement('select');
+        dimintions.setAttribute('id', selectID);
+        calculator.appendChild(dimintions);
+        var option1 = document.createElement('option');
+        dimintions.appendChild(option1);
+        var option1txt = document.createTextNode('Please select the given dimintion');
+        option1.appendChild(option1txt);
+        option1.setAttribute('selected', '');
+        for (var i = 0; i < selectOptionList.length; i++) {
+            var option = document.createElement('option');
+            dimintions.appendChild(option);
+            var txt = document.createTextNode(selectOptionList[i]);
+            option.appendChild(txt);
         }
     }
     //Dont code after this curly brace.

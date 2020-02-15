@@ -24,10 +24,10 @@
       <input type="number" placeholder="number of sides" id="numOfSides"/>
       <br>
       <select id="regShapes-dimintions">
-        <option value="defult">Please select the given dimention</option>
+        <option value="defult" selected >Please select the given dimention</option>
         <option value="apothem-side">Apothem and Side</option>
         <option value="apothem">Apothem only</option>
-        <option value="radius">radius</option>
+        <option value="radius">radius only</option>
         <option value="side">Side only</option>
       </select>
       <button id='regShapes-resetDimintions' class="btn btn-warning">Reset dimintions</button>
@@ -37,16 +37,23 @@
     </div>
   </div>
   <!--quadrilaterals-->
-  <div class="geometrycontainer container" id="quad-mergePlace">
+  <div class="geometrycontainer container">
     <h2>Quadrilaterals<img class="info" src="../../../img/info.png" title="Shapes with 4 sides and 4 angles (not nesserly equal)"></h2>
-    <select id="quad-shapeSelect">
-      <option value="defult">Please select the Quadrilateral</option>
-      <option value="rectangle">rectangle</option>
-      <option value="square">square</option>
-      <option value="paralellogram">paralellogram</option>
-      <option value="rhombus">rhombus</option>
-      <option value="trapizoid">trapizoid</option>
-    </select>
+    <div id="quad-calculator" class="calculator">
+      <h3>Calculator</h3>
+      <select id="quad-shapeSelect">
+        <option value="quad-defult">Please select the Quadrilateral</option>
+        <option value="rectangle">rectangle</option>
+        <option value="square">square</option>
+        <option value="paralellogram">paralellogram</option>
+        <option value="rhombus">rhombus</option>
+        <option value="trapizoid">trapizoid</option>
+      </select>
+      <span id="quad-dimintionsSelect"></span>
+      <div id="quad-inputPlace"></div>
+      <button class="btn btn-secondary" id="quad-area">Calculate Area</button>
+      <button class="btn btn-secondary" id="quad-perimeter">Calculate Perimeter</button>
+    </div>
   </div>
 </body>
 </html>
