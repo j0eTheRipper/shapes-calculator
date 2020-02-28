@@ -77,42 +77,52 @@ window.onload = function () {
     //quadrilatrals:
     var quadrilatrals = {
         shapesSelect: document.getElementById('quad-shapeSelect'),
-        dimintions: [],
+        resetBTN: document.getElementById('quad-reset'), 
+        calcArea: document.getElementById('quad-area'),
+        calcPerimeter: document.getElementById('quad-perimeter'),
+        selectMergeFiled: document.getElementById('quad-dimintionsSelectFild'),
+        inputsMergeFiled: this.document.getElementById('quad-inputPlace'),
+        dimintionsSelect: [],
         calculatorSetup: function () {
-            var inputPlace = document.getElementById('quad-inputPlace').innerHTML;
-            var dimintionsSelect =  document.getElementById('quad-dimintionsSelect').innerHTML;
+            var dimintionSelect;
             switch (this.shapesSelect.value) {
                 case 'square':
-                    this.dimintions.push('side'); 
-                    this.dimintions.push('apothem');
-                    this.dimintions.push('diognal');
-                    this.dimintions.push('radius');
-                    this.dimintions.push('perimeter to area');
-                    this.dimintions.push('area to perimeter');
+                    if (this.selectMergeFiled.innerHTML === "" && this.dimintionsSelect.length === 0) {
+                        this.dimintionsSelect.push('side', 'apothem', 'diognal', 'radius', 'perimeter to area', 'area to perimeter'); 
+                        mkselect('quad-dimintionsSelectFild', this.shapesSelect.value, this.dimintionsSelect);
+                        dimintionSelect = document.getElementById(this.shapesSelect.value);
+                        dimintionSelect.onchange = function () {
+                            if (quadrilatrals.inputsMergeFiled.innerHTML === '') {
+                                switch (dimintionSelect.value) {
+                                    case 'perimeter to area':
+                                        mkinput('quad-inputPlace', 'perimeter-calc-area-quad', 'Perimeter');
+                                        break;
+                                    case 'area to perimeter':
+                                        mkinput('quad-inputPlace', 'area-calc-perimeter-quad', 'Area');
+                                        break;
+                                    default:
+                                        mkinput('quad-inputPlace', dimintionSelect.value, dimintionSelect.value);
+                                        break;
+                                }
+                            } else {
+                                alert('please reset');
+                            }
+                        }
+                    } else {
+                        alert('please reset');
+                        console.log(this.dimintionsSelect);
+                    }   
                     break;
+                 case 'rectangle': 
+                    this.dimintionsSelect.push('Length and width', 'Diognal and length', 'Diognal and width', 'Perimeter and length', 'Perimeter and width', 'area and length', 'area and width');
+                break;
                 default:
                     console.log('please fix the bug')
-                    break;
-            }
-            if (this.dimintions.length > 0) { 
-                if (dimintionsSelect === '') {
-                    mkselect('quad-dimintionsSelect', 'quad-options', this.dimintions);
-                } else {
-                    alert('please reset all using the \'reset all\' button before changing the dimintions')
-                }
-                var quadOptions = document.getElementById('quad-options');   
-                quadOptions.onchange = function () {
-                    if (inputPlace === '') {
-                        mkinput('quad-inputPlace', quadOptions.value, quadOptions.value)
-                    } else {
-                        alert('If you want to only change the dimintions, use the reset dimintions button or use the reset all button if you want to reset everything')
-                    }
-                }
-            } else {
-                
+                break;
             }
         }
-    }
+    };
+    //regShapes comands
     regShapes.dimintions.onchange = function () {
         regShapes.calculatorSetup();
     }
@@ -126,9 +136,18 @@ window.onload = function () {
     regShapes.perimeterBtn.onclick = function () {
         regShapes.calculator(false);
     }
+    //quad-comands
     quadrilatrals.shapesSelect.onchange = function () {
         quadrilatrals.calculatorSetup();
     }
+    quadrilatrals.resetBTN.onclick = function () {
+        quadrilatrals.selectMergeFiled.innerHTML = ''; 
+        quadrilatrals.dimintionsSelect = [];
+        quadrilatrals.inputsMergeFiled.innerHTML = '';
+        quadrilatrals.shapesSelect.value = 'quad-defult';
+        console.log(quadrilatrals.dimintionsSelect);
+    }
+    //functions
     function mkinput(mergePlace, id, placeholder) {
         var newElement = document.createElement('input');
         newElement.setAttribute('id', id);
