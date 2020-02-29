@@ -77,11 +77,12 @@ window.onload = function () {
     //quadrilatrals:
     var quadrilatrals = {
         shapesSelect: document.getElementById('quad-shapeSelect'),
-        resetBTN: document.getElementById('quad-reset'), 
+        resetBtn: document.getElementById('quad-resetAll'),
+        resetDimintionsBtn: document.getElementById('quad-resetDimintons'),
         calcArea: document.getElementById('quad-area'),
         calcPerimeter: document.getElementById('quad-perimeter'),
         selectMergeFiled: document.getElementById('quad-dimintionsSelectFild'),
-        inputsMergeFiled: this.document.getElementById('quad-inputPlace'),
+        inputsMergeFiled: document.getElementById('quad-inputPlace'),
         dimintionsSelect: [],
         calculatorSetup: function () {
             var dimintionSelect;
@@ -96,22 +97,30 @@ window.onload = function () {
                                 switch (dimintionSelect.value) {
                                     case 'perimeter to area':
                                         mkinput('quad-inputPlace', 'perimeter-calc-area-quad', 'Perimeter');
+                                        quadrilatrals.calcPerimeter.setAttribute('disabled', ''); 
                                         break;
                                     case 'area to perimeter':
                                         mkinput('quad-inputPlace', 'area-calc-perimeter-quad', 'Area');
+                                        quadrilatrals.calcArea.setAttribute('disabled', ''); 
                                         break;
                                     default:
                                         mkinput('quad-inputPlace', dimintionSelect.value, dimintionSelect.value);
                                         break;
+                                    }
+                                } else {
+                                    alert('please reset the dimintions');
                                 }
-                            } else {
-                                alert('please reset');
+                                quadrilatrals.resetDimintionsBtn.onclick = function () {
+                                    dimintionSelect.value = 'Please select the given dimintion';
+                                    quadrilatrals.inputsMergeFiled.innerHTML = '';
+                                    quadrilatrals.calcArea.removeAttribute('disabled');
+                                    quadrilatrals.calcPerimeter.removeAttribute('disabled');
+                                }
                             }
+                        } else {
+                            alert('please reset all');
                         }
-                    } else {
-                        alert('please reset');
-                        console.log(this.dimintionsSelect);
-                    }   
+
                     break;
                  case 'rectangle': 
                     this.dimintionsSelect.push('Length and width', 'Diognal and length', 'Diognal and width', 'Perimeter and length', 'Perimeter and width', 'area and length', 'area and width');
@@ -140,12 +149,14 @@ window.onload = function () {
     quadrilatrals.shapesSelect.onchange = function () {
         quadrilatrals.calculatorSetup();
     }
-    quadrilatrals.resetBTN.onclick = function () {
+    quadrilatrals.resetBtn.onclick = function () {
         quadrilatrals.selectMergeFiled.innerHTML = ''; 
         quadrilatrals.dimintionsSelect = [];
         quadrilatrals.inputsMergeFiled.innerHTML = '';
         quadrilatrals.shapesSelect.value = 'quad-defult';
-        console.log(quadrilatrals.dimintionsSelect);
+        quadrilatrals.calcPerimeter.removeAttribute('disabled');
+        quadrilatrals.calcArea.removeAttribute('disabled');
+        //console.log(quadrilatrals.dimintionsSelect);
     }
     //functions
     function mkinput(mergePlace, id, placeholder) {
