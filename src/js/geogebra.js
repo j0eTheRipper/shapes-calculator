@@ -86,9 +86,9 @@ window.onload = function () {
         dimintionsSelect: [],
         calculatorSetup: function () {
             var dimintionSelect1;
-            switch (this.shapesSelect.value) {
-                case 'square':
-                    if (this.selectMergeFiled.innerHTML === "" && this.dimintionsSelect.length === 0) {
+            if (this.selectMergeFiled.innerHTML === "" && this.dimintionsSelect.length === 0) {
+                switch (this.shapesSelect.value) {
+                    case 'square':
                         this.dimintionsSelect.push('side', 'apothem', 'diognal', 'radius', 'perimeter to area', 'area to perimeter'); 
                         mkselect('quad-dimintionsSelectFild', this.shapesSelect.value, this.dimintionsSelect);
                         dimintionSelect1 = document.getElementById(this.shapesSelect.value);
@@ -106,70 +106,67 @@ window.onload = function () {
                                     default:
                                         mkinput('quad-inputPlace', dimintionSelect1.value, dimintionSelect1.value);
                                         break;
+                                }
+                            } else {
+                                    alert('please reset the dimintions');
+                                }
+                            }
+                        break;
+                        case 'rectangle':
+                            this.dimintionsSelect.push('Length and width', 'Diognal and length', 'Diognal and width', 'Perimeter and length', 'Perimeter and width', 'Area and length', 'Area and width');
+                            mkselect('quad-dimintionsSelectFild', this.shapesSelect.value, this.dimintionsSelect); 
+                            dimintionSelect1 = document.getElementById(this.shapesSelect.value);
+                            dimintionSelect1.onchange = function () {
+                                if (quadrilatrals.inputsMergeFiled.innerHTML === '') {
+                                    switch (dimintionSelect1.value) {
+                                        case 'Length and width':
+                                            mkinput('quad-inputPlace', 'quad-length', 'Length');
+                                            mkinput('quad-inputPlace', 'quad-width', 'Width');
+                                            break;
+                                            case 'Diognal and length':
+                                                mkinput('quad-inputPlace', 'quad-diognal', 'Diognal');
+                                                mkinput('quad-inputPlace', 'quad-length', 'Length');
+                                                break;
+                                            case 'Diognal and width': 
+                                                mkinput('quad-inputPlace', 'quad-diognal', 'Diognal'); 
+                                                mkinput('quad-inputPlace', 'quad-width', 'Width');
+                                                break; 
+                                            case 'Perimeter and length':
+                                                mkinput('quad-inputPlace', 'quad-perimeter', 'perimeter');
+                                                mkinput('quad-inputPlace', 'quad-length', 'length');
+                                                quadrilatrals.calcPerimeter.setAttribute('disabled', '');
+                                                break;
+                                            case 'Perimeter and width': 
+                                                mkinput('quad-inputPlace', 'quad-perimeter', 'perimeter');
+                                                mkinput('quad-inputPlace', 'quad-width', 'width');
+                                                quadrilatrals.calcPerimeter.setAttribute('disabled', '');
+
+                                                break;
+                                            case 'Area and length': 
+                                                mkinput('quad-inputPlace', 'quad-area', 'area');
+                                                mkinput('quad-inputPlace', 'quad-length', 'length');
+                                                quadrilatrals.calcArea.setAttribute('disabled', '');
+                                                break;
+                                            case 'Area and width': 
+                                                mkinput('quad-inputPlace', 'quad-area', 'area');
+                                                mkinput('quad-inputPlace', 'quad-length', 'width');
+                                                quadrilatrals.calcArea.setAttribute('disabled', '');
+                                                break;
+                                            default:
+                                                console.log('please fix the bug');
+                                            break;
                                     }
                                 } else {
                                     alert('please reset the dimintions');
                                 }
                             }
-                        } else {
-                            alert('please reset all');
-                        }
-
                     break;
-                case 'rectangle':
-                    if (this.selectMergeFiled.innerHTML === '' && this.dimintionsSelect.length === 0) {
-                       this.dimintionsSelect.push('Length and width', 'Diognal and length', 'Diognal and width', 'Perimeter and length', 'Perimeter and width', 'Area and length', 'Area and width');
-                       mkselect('quad-dimintionsSelectFild', this.shapesSelect.value, this.dimintionsSelect); 
-                       dimintionSelect1 = document.getElementById(this.shapesSelect.value);
-                       dimintionSelect1.onchange = function () {
-                           if (quadrilatrals.inputsMergeFiled.innerHTML === '') {
-                               switch (dimintionSelect1.value) {
-                                   case 'Length and width':
-                                       mkinput('quad-inputPlace', 'quad-length', 'Length');
-                                       mkinput('quad-inputPlace', 'quad-width', 'Width');
-                                       break;
-                                    case 'Diognal and length':
-                                        mkinput('quad-inputPlace', 'quad-diognal', 'Diognal');
-                                        mkinput('quad-inputPlace', 'quad-length', 'Length');
-                                        break;
-                                    case 'Diognal and width': 
-                                        mkinput('quad-inputPlace', 'quad-diognal', 'Diognal'); 
-                                        mkinput('quad-inputPlace', 'quad-width', 'Width');
-                                        break; 
-                                    case 'Perimeter and length':
-                                        mkinput('quad-inputPlace', 'quad-perimeter', 'perimeter');
-                                        mkinput('quad-inputPlace', 'quad-length', 'length');
-                                        quadrilatrals.calcPerimeter.setAttribute('disabled', '');
-                                        break;
-                                    case 'Perimeter and width': 
-                                        mkinput('quad-inputPlace', 'quad-perimeter', 'perimeter');
-                                        mkinput('quad-inputPlace', 'quad-width', 'width');
-                                        quadrilatrals.calcPerimeter.setAttribute('disabled', '');
-
-                                        break;
-                                    case 'Area and length': 
-                                        mkinput('quad-inputPlace', 'quad-area', 'area');
-                                        mkinput('quad-inputPlace', 'quad-length', 'length');
-                                        quadrilatrals.calcArea.setAttribute('disabled', '');
-                                        break;
-                                    case 'Area and width': 
-                                        mkinput('quad-inputPlace', 'quad-area', 'area');
-                                        mkinput('quad-inputPlace', 'quad-length', 'length');
-                                        quadrilatrals.calcArea.setAttribute('disabled', '');
-                                        break;
-                                    default:
-                                        console.log('please fix the bug');
-                                       break;
-                               }
-                           }
-                       }
-                    } else {
-                       alert('please reset all');
-                     }
-                break;
-                default:
-                    console.log('please fix the bug')
-                break;
+                    default:
+                        console.log('please fix the bug')
+                    break;
+                }
+            } else {
+                alert('Please reset all');
             }
             quadrilatrals.resetDimintionsBtn.onclick = function () {
                 dimintionSelect1.value = 'Please select the given dimintion';
